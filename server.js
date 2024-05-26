@@ -7,9 +7,13 @@ const server = http.createServer((req, res) => {
       url = "index.html";
       res.statusCode = 200;
       break;
-    case "/contant":
-      url = "contant.html";
+    case "/contact":
+      url = "contact.html";
       res.statusCode = 200;
+      break;
+    case "/contact-us":
+      res.setHeader("Location", "/contact");
+      res.statusCode = 301;
       break;
     case "/about":
       url = "about.html";
