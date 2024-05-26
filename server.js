@@ -1,10 +1,31 @@
 const http = require("http");
 const fs = require("fs");
 const server = http.createServer((req, res) => {
+  let url;
+  switch (req.url) {
+    case "/":
+      url = "index.html";
+      break;
+    case "/contant":
+      url = "contant.html";
+      break;
+    case "/about":
+      url = "about.html";
+      break;
+    default:
+      url = "404.html";
+      break;
+  }
   res.setHeader("Content-Type", "text/html");
-  res.write("<h1>hello world</h1>");
-  fs.readFile();
-  res.end();
+  fs.readFile(`./views/${url}`, (err, data) => {
+    if (err) {
+      console.log(err);
+      res.end();
+    } else {
+      res.write(data);
+      res.end();
+    }
+  });
 });
 server.listen(3000, "localhost", () => {
   console.log("server listening on http://localhost:3000");
