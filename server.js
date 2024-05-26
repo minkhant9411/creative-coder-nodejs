@@ -5,15 +5,19 @@ const server = http.createServer((req, res) => {
   switch (req.url) {
     case "/":
       url = "index.html";
+      res.statusCode = 200;
       break;
     case "/contant":
       url = "contant.html";
+      res.statusCode = 200;
       break;
     case "/about":
       url = "about.html";
+      res.statusCode = 200;
       break;
     default:
       url = "404.html";
+      res.statusCode = 404;
       break;
   }
   res.setHeader("Content-Type", "text/html");
