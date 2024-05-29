@@ -1,5 +1,18 @@
 const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
+const mongoUrl =
+  "mongodb+srv://minkhant9411:XuAMOfzJXdEvLkuZ@forlocal.r8wqmg1.mongodb.net/?retryWrites=true&w=majority&appName=forlocal";
+
+mongoose
+  .connect(mongoUrl)
+  .then(() => {
+    console.log("connected to db!");
+  })
+  .catch((e) => {
+    console.log(e);
+  });
+
 app.set("views", "./views");
 app.set("view engine", "ejs");
 
